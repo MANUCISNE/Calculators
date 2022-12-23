@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Air Density Calculator</title>
+  </head>
+  <body>
+    <h1>Air Density Calculator</h1>
+    <form>
+      Temperature (°C): <input type="number" id="temperature"><br>
+      Pressure (hPa): <input type="number" id="pressure"><br>
+      Humidity (%): <input type="number" id="humidity"><br>
+      <input type="button" value="Calculate" onclick="calculateDensity()">
+    </form>
+    <br>
+    <p>Density (kg/m^3): <span id="density"></span></p>
+    <script>
+      
+    function airDensity(onclick) {
+     var w0 = 0;
+     var w1 = eval(document.getElementById('temperature').value) + 273;
+     var w2 = eval(document.getElementById('pressure').value);
+
+     w2 = (1.2 * 293 * w2);
+     w1 = (1013 * w1);
+     w0 = (w2 / w1);
+     w0 = (Math.round(w0 * 1000) / 1000);
+
+     document.getElementById('density').value = w0;
+
+     //document.getElementById('temp').focus();
+
+     return false;
+    }
+    
+    </script>
+  </body>
+</html>
